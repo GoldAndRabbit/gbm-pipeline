@@ -1,2 +1,2 @@
-# -GBM_script
+# GBM_script
 Reusable scripts training catboost/lightgbm model.
