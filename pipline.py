@@ -10,8 +10,9 @@ def build_titanic_dataset():
     df_train, df_test = titanic()
     df_train.fillna(-999, inplace=True)
     df_test.fillna(-999, inplace=True)
-    X = df_train.drop('Survived', axis=1)
-    y = df_train.Survived
+    X = df_train.drop('Survived', axis=1)     # X: train feature
+    y = df_train.Survived                     # y: train label
+
     # if the feature value type != float, then be treat as a categorial feature
     cate_feat_idx = np.where(X.dtypes != np.float)[0]
     x_train, x_vali, y_train, y_vali = train_test_split(X, y, train_size=0.75, random_state=42)
@@ -73,6 +74,7 @@ def test_catboost():
     }
     # catboost_cv_eval(X, y, cate_feat_idx, params)
     catboost_train_evel(x_train, y_train, x_vali, y_vali, x_test, params, cate_feat_idx)
+
 
 if __name__ == '__main__':
     test_catboost()
